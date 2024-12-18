@@ -1,0 +1,27 @@
+name: Caller Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_input:
+        description: "Enter 1 to call reusable1 or 2 to call reusable2"
+        required: true
+        type: choice
+        options:
+          - "1"
+          - "2"
+
+jobs:
+  call_reusable:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Conditionally call reusable1.yml
+      - name: Call Reusable1
+        if: ${{ github.event.inputs.user_input == '1' }}
+        uses: ./.github/workflows/reusable1.yml
+
+      # Conditionally call reusable2.yml
+      - name: Call Reusable2
+        if: ${{ github.event.inputs.user_input == '2' }}
+        uses: ./.github/workflows/reusable2.yml
