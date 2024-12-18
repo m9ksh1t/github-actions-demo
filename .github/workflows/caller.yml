@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      #check out code
+      - name: Check out code
+        uses: actions/checkout@v4
       # Conditionally call reusable1.yml
       - name: Call Reusable1
         if: ${{ github.event.inputs.user_input == '1' }}
