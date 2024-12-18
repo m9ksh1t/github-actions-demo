@@ -12,17 +12,10 @@ on:
           - "2"
 
 jobs:
-  call-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out entire code
-        uses: actions/checkout@v3
-      - name: Call Reusable1
-        if: ${{ github.event.inputs.user_input == '1' }}
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
-        # uses: ./.github/workflows/reuse1.yml@main
+  call-reusable1:
+    if: ${{ github.event.inputs.user_input == '1' }}
+    uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
 
-      - name: Call Reusable2
-        if: ${{ github.event.inputs.user_input == '2' }}
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
-        # uses: ./.github/workflows/reuse2.yml@main
+  call-reusable2:
+    if: ${{ github.event.inputs.user_input == '2' }}
+    uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
