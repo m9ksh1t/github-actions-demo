@@ -19,8 +19,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Call Reusable1
         if: ${{ github.event.inputs.user_input == '1' }}
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml
+        uses: ./m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml
 
       - name: Call Reusable2
         if: ${{ github.event.inputs.user_input == '2' }}
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml
+        uses: ./m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml
