@@ -15,8 +15,6 @@ jobs:
   call-workflow:
     runs-on: ubuntu-latest
     steps:
-      # No need for checkout for reusable workflows in the same repo
-      # Call the reusable workflows conditionally
       - name: Call Reusable1
         if: ${{ github.event.inputs.user_input == '1' }}
         uses: ./.github/workflows/reuse1.yml
