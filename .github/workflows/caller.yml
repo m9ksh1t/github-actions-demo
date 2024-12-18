@@ -22,9 +22,9 @@ jobs:
       # Conditionally call reusable1.yml
       - name: Call Reusable1
         if: ${{ github.event.inputs.user_input == '1' }}
-        uses: ./.github/workflows/reusable1.yml
+        uses: ./.github/workflows/reuse1.yml
 
       # Conditionally call reusable2.yml
       - name: Call Reusable2
         if: ${{ github.event.inputs.user_input == '2' }}
-        uses: ./.github/workflows/reusable2.yml
+        uses: ./.github/workflows/reuse2.yml
