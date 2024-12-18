@@ -12,7 +12,7 @@ on:
           - "2"
 
 jobs:
-  call_reusable:
+  call-workflow:
     runs-on: ubuntu-latest
     steps:
       # No need for checkout for reusable workflows in the same repo
