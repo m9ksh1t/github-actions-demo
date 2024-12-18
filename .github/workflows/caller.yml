@@ -15,6 +15,8 @@ jobs:
   call-workflow:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v3
       - name: Call Reusable1
         if: ${{ github.event.inputs.user_input == '1' }}
         uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml
