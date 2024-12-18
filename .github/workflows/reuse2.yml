@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    #   - name: Check out code
-    #     uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v4
       - name: Echo greetings
         run: echo "reuse2"
