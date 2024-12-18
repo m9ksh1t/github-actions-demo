@@ -17,8 +17,8 @@ jobs:
     steps:
       - name: Call Reusable1
         if: ${{ github.event.inputs.user_input == '1' }}
-        uses: https://github.com/m9ksh1t/github-actions-demo/blob/main/.github/workflows/reuse1.yml
+        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml
 
       - name: Call Reusable2
         if: ${{ github.event.inputs.user_input == '2' }}
-        uses: https://github.com/m9ksh1t/github-actions-demo/blob/main/.github/workflows/reuse2.yml
+        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml
