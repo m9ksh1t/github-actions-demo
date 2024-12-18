@@ -23,4 +23,4 @@ jobs:
 
       - name: Call Reusable2
         if: ${{ github.event.inputs.user_input == '2' }}
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml
+        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml
