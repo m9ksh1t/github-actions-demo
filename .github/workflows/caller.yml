@@ -8,7 +8,8 @@ on:
 jobs:
   decide-and-call:
     runs-on: ubuntu-latest
-
+    outputs:
+      cloud_provider: ${{ steps.extract.outputs.cloud_provider }}
     steps:
       - name: Extract Cloud Provider from Branch Name
         id: extract
@@ -17,16 +18,18 @@ jobs:
           echo "Branch name: $branch_name"
           if [[ "$branch_name" == *azure* ]]; then
             echo "cloud_provider=Azure" >> $GITHUB_ENV
+            echo "::set-output name=cloud_provider::Azure"
           elif [[ "$branch_name" == *aws* ]]; then
             echo "cloud_provider=AWS" >> $GITHUB_ENV
+            echo "::set-output name=cloud_provider::AWS"
           else
             echo "Unknown cloud provider. Exiting."
             exit 1
 
   call-azure:
-    if: ${{ env.cloud_provider == 'Azure' }}
+    if: ${{ needs.decide-and-call.outputs.cloud_provider == 'Azure' }}
     uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
 
   call-aws:
-    if: ${{ env.cloud_provider == 'AWS' }}
+    if: ${{ needs.decide-and-call.outputs.cloud_provider == 'AWS' }}
     uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
