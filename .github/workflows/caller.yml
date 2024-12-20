@@ -28,9 +28,9 @@ jobs:
         run: echo "Cloud Provider: ${{ env.cloud_provider }}"
 
       - name: Call Azure Workflow
-        if: ${{ env.cloud_provider == 'Azure' }}
+        if: env.cloud_provider == 'Azure'
         uses: ./.github/workflows/reuse1.yml
 
       - name: Call AWS Workflow
-        if: ${{ env.cloud_provider == 'AWS' }}
+        if: env.cloud_provider == 'AWS'
         uses: ./.github/workflows/reuse2.yml
