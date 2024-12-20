@@ -17,20 +17,21 @@ jobs:
           branch_name=${GITHUB_REF##*/}
           echo "Branch name: $branch_name"
           if [[ "$branch_name" == *azure* ]]; then
-            echo "cloud_provider=Azure" >> $GITHUB_ENV
-            echo "::set-output name=cloud_provider::Azure"
+            echo "cloud_provider=Azure" >> $GITHUB_OUTPUT
           elif [[ "$branch_name" == *aws* ]]; then
-            echo "cloud_provider=AWS" >> $GITHUB_ENV
-            echo "::set-output name=cloud_provider::AWS"
+            echo "cloud_provider=AWS" >> $GITHUB_OUTPUT
           else
             echo "Unknown cloud provider. Exiting."
             exit 1
           fi
+        shell: bash
 
   call-azure:
+    needs: decide-and-call
     if: ${{ needs.decide-and-call.outputs.cloud_provider == 'Azure' }}
     uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
 
   call-aws:
+    needs: decide-and-call
     if: ${{ needs.decide-and-call.outputs.cloud_provider == 'AWS' }}
     uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
