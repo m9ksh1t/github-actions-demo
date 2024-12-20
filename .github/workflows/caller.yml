@@ -25,6 +25,7 @@ jobs:
           else
             echo "Unknown cloud provider. Exiting."
             exit 1
+          fi
 
   call-azure:
     if: ${{ needs.decide-and-call.outputs.cloud_provider == 'Azure' }}
