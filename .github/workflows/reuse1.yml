@@ -8,4 +8,4 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Echo greetings
-        run: echo "reuse1"
+        run: echo "AZURE DEPLOY"
