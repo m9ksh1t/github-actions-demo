@@ -6,7 +6,7 @@ on:
       - 'feature/*' # Match branches with naming convention
 
 jobs:
-  call-workflow:
+  decide-and-call:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,16 +22,11 @@ jobs:
           else
             echo "Unknown cloud provider. Exiting."
             exit 1
-          fi
 
-      - name: Debug Input
-        run: |
-          echo "Cloud Provider: ${{ env.cloud_provider }}"
+  call-azure:
+    if: ${{ env.cloud_provider == 'Azure' }}
+    uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
 
-      - name: Call Azure Workflow
-        if: env.cloud_provider == 'Azure'
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
-
-      - name: Call AWS Workflow
-        if: env.cloud_provider == 'AWS'
-        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
+  call-aws:
+    if: ${{ env.cloud_provider == 'AWS' }}
+    uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
