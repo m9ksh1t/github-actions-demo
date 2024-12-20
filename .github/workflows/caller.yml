@@ -30,8 +30,8 @@ jobs:
 
       - name: Call Azure Workflow
         if: env.cloud_provider == 'Azure'
-        uses: ./.github/workflows/reuse1.yml
+        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse1.yml@main
 
       - name: Call AWS Workflow
         if: env.cloud_provider == 'AWS'
-        uses: ./.github/workflows/reuse2.yml
+        uses: m9ksh1t/github-actions-demo/.github/workflows/reuse2.yml@main
