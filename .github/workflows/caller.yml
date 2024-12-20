@@ -25,7 +25,8 @@ jobs:
           fi
 
       - name: Debug Input
-        run: echo "Cloud Provider: ${{ env.cloud_provider }}"
+        run: |
+          echo "Cloud Provider: ${{ env.cloud_provider }}"
 
       - name: Call Azure Workflow
         if: env.cloud_provider == 'Azure'
